@@ -3,11 +3,38 @@ fifa
 
 FreeImage For Android
 
-The .mk files for android were created based on the steps explained at the below url http://recursify.com/blog/2013/05/25/building-freeimage-for-android.
+Prerequisites
+-------------
 
-Except step 3 in the above tutorial, i followed almost all of it. Below given changes are the differences in step 3 for this build.
-
-    3a) Commented out `#define HAVE_SEARCH_H 1` as done in above.
+    Android NDK
     
-    3b) Android NDK does provide (at least it does now, not sure if it was there before) bswap\_16 implementation in the header `#include <byteswap.h>` which you can find in the include folder of the corresponding android platform arch-arm folder.
-    swab implementation from https://github.com/ajeet17181/mplayer-android(mplayer-android/osdep/swab.c) was used.
+    Tested it on 64-bit Arch Linux only.
+
+Build steps
+-----------
+
+None at all.
+
+
+
+Following changes are already done in the repo, so that you can just do `ndk-build` from the `$REPO_ROOT`(assuming this variable points to the location of the repository on your machine) and build the freeimage shared library for android.
+    
+1. Android.mk file is created based on the steps explained [here](http://recursify.com/blog/2013/05/25/building-freeimage-for-android)
+ 
+2. `SRC=$REPO_ROOT/jni/Source`
+
+3. Commented the line `#define HAVE_SEARCH_H 1` from file `$SRC/LibTIFF4/tif_config.h`
+    
+4. Included the header `#include <byteswap.h>` in `$SRC\LibRawLite\internal\dcraw_common.cpp`
+       for swab_16 implementation.
+    
+5. Copied the swab implementation from https://github.com/ajeet17181/mplayer-android
+       (mplayer-android/osdep/swab.c) in the file `$SRC\LibRawLite\internal\dcraw_common.cpp`
+    
+In case of any build errors related to android platform, make sure the file `$REPO_ROOT/jni/Application.mk` is indicating the correct platform number. You can do so by using the variable `APP_PLATFORM:=android-<platform number>`.
+
+For any other errors, kindly let me know so that i can fix them.
+
+License
+-------
+This repo contains freeimage source files and it is licensed under FIPL. You can find the license over [here](http://freeimage.sourceforge.net/freeimage-license.txt).
