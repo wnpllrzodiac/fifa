@@ -1,3 +1,7 @@
+# directories to exclude from versioning
+libs
+obj
+
 # Compiled Object files
 *.slo
 *.lo
