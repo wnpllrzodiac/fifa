@@ -35,6 +35,9 @@ In case of any build errors related to android platform, make sure the file `$RE
 
 For any other errors, kindly let me know so that i can fix them.
 
+To speedup the build process, you can use -j <#> option of ndk-build command.
+For eg. `ndk-build -j 6`
+
 License
 -------
 This repo contains freeimage source files and it is licensed under FIPL. You can find the license over [here](http://freeimage.sourceforge.net/freeimage-license.txt).
