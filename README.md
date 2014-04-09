@@ -1,7 +1,7 @@
 fifa
 ====
 
-FreeImage For Android
+FreeImage For Android (3.15.4 version)
 
 Prerequisites
 -------------
