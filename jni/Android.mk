@@ -3,7 +3,7 @@ LOCAL_PATH := $(call my-dir)
 include $(LOCAL_PATH)/Makefile.srcs
 
 include $(CLEAR_VARS)
-LOCAL_MODULE       := FreeImage
+LOCAL_MODULE       := freeimagestatic
 LOCAL_ARM_MODE	   := arm
 LOCAL_C_INCLUDES   := $(LOCAL_PATH)/Source \
 	$(LOCAL_PATH)/Source/Metadata \
@@ -30,8 +30,8 @@ LOCAL_CFLAGS       := -O3 -fPIC
 include $(BUILD_STATIC_LIBRARY)
 
 include $(CLEAR_VARS)
-LOCAL_MODULE       := FreeImageShared
+LOCAL_MODULE       := freeimage
 LOCAL_ARM_MODE	   := arm
-LOCAL_STATIC_LIBRARIES := FreeImage
+LOCAL_STATIC_LIBRARIES := freeimagestatic
 include $(BUILD_SHARED_LIBRARY)
 
